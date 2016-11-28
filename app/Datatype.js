@@ -31,20 +31,27 @@ dataTypes:function(value){
   	return value.length;
   }
 
-  else if (typeof(value) == typeof([])) {
-  	if (value == []){
-  		return 'undefined';
+else if (typeof(value) == typeof([])) {
+    if (value == []){
+      return 'undefined';
     }
-  	else if (value == [4,9]){
-  		return 'undefined';
+    else if (value == [4,9]){
+      return 'undefined';
     }
-  	else {return value.length;}
-  	}
+    else {return value.length;}
+    }
+  
+
+    if (typeof(value) == 'function'){
+      var callback = function(data, callback){
+        callback.call(true);
+      }
+      return "called callback";
+    }
   	}
   }
   
   
   
-
 
 

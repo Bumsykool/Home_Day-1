@@ -2,16 +2,19 @@ module.exports = {
 
 
 getPrimes: function(n) {
-   var primes = [];
-for(var n=3;n<=100;n+=2) {
-  if(primes.every(function(prime){return n%prime!=0})) {
-    primes.push(n);
-  }
-}
-primes.unshift(2);
-return primes
+    var sieve = [], i, j, primes = [];
+    for (i = 2; i <= n; ++i) {
+        if (!sieve[i]) {
+            
+            primes.push(i);
+            for (j = i << 1; j <= n; j += i) {
+                sieve[j] = true;
+            }
+        }
+    }
+    return primes;
 
 
-}
+ }
 
 }

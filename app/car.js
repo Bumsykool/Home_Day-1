@@ -1,24 +1,45 @@
-var Car = function (name = 'General', model, type) {
-  
-  this.type = type;
-  this.model = model;
-  this.name = name;
-  this.numOfDoors = 4;
-  this.numOfWheels = 4;
-};
+module.exports = function Car(name,model,type){
+    if(typeof(name) == typeof("")){
+      this.name = name;
+    }
+    else{
+      this.name = "General";
+    }
+    if(typeof(model) == typeof("")){
+      this.model = model;
+    }
+    else{
+      this.model = "GM";
+    }
+      this.type = type;
 
-Car.prototype.callCar = function() {
-  if(this.name === 'Porshe' || this.name === 'Koenigsegg'){
-     this.numOfDoors = 2;
-  }
-  if(this.type === 'trailer'){
-     this.numOfWheels = 8;
-  }
-  console.log("Hello, I'm " + this.name + ' of model ' + this.model + ' and i have ' + this.numOfDoors + ' doors');
-};
+      if(this.name === "Porshe" || this.name === "Koenigsegg"){
+        this.numOfDoors = 2;
 
-var car1 = new Car();
-var car2 = new Car("Porshe","Omega 3");
+      }
+      else{
+        this.numOfDoors = 4;
+      }
 
-car1.callCar();
-car2.callCar();
+      this.speed = "0 km/h";
+
+      this.drive = function(number){
+        this.gear = number;
+        if(this.name === "Porshe")
+          this.speed = "250 km/h";
+        if(this.name === "MAN")
+          this.speed ="77 km/h";
+        return this; 
+      }
+
+      if(this.type === "trailer"){
+        this.numOfWheels = 8;
+        this.isSaloon = false;
+      }
+      else{
+        this.numOfWheels = 4;
+        this.isSaloon = true;
+      }
+      
+
+    }
